@@ -2,9 +2,7 @@ const apiPath = 'https://jsonplaceholder.typicode.com/';
 
 export const RESOURCE_TYPE = {
     posts: 'posts',
-    comments: 'comments',
     users: 'users',
-    albums: 'albums',
 };
 
 export const getData = (resourceType) => {

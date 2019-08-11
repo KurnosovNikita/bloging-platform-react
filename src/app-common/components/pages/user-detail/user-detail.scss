@@ -1,0 +1,19 @@
+.card-description {
+    display: flex;
+    flex-direction: column;
+
+    .card-name,
+    .card-username,
+    .card-email,
+    .card-website,
+    .card-address,
+    .card-phone,
+    .card-company-name,
+    .card-company-phrase,
+    .card-company-bs {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 25px;
+    }
+}

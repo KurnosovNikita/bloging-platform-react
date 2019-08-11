@@ -1,5 +1,5 @@
 /*
-* Movie detail constants
+* Post detail constants
 * */
 
 import keymirror from 'keymirror';

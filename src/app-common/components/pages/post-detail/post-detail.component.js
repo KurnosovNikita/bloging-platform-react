@@ -1,37 +1,34 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
-import PostsPage from '../../pages/posts/posts.component';
-import PostDescription from '../../../../common/post-description/post-description.component';
+import React, {Component} from "react";
+import Button from '../../../../base/button/button.component';
+import {Link} from 'react-router-dom';
 import './post-detail.scss';
 
-class PostDetail extends React.Component {
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return !(this.props.posts.length === nextProps.posts.length
-          && this.props.selectedPost[0].id === nextProps.selectedPost[0].id && this.props.posts.filter(
-            (item, index) => item.id === nextProps.posts[index].id).length === this.props.posts.length);
-    }
+class PostDetail extends Component {
 
     render() {
-        const {selectedPost} = this.props;
+        const {
+            selectedPost: {selectedPost: selectedPost},
+            handleButtonClick
+        } = this.props;
+        const {userId, title, body} = selectedPost[0];
 
         return (
-          <Fragment>
-              <PostDescription
-                selectedPost={selectedPost.selectedPost}/>
-              <PostsPage handleImageClick={this.handleImageClick}/>
-          </Fragment>
+          <div className="card-description">
+              <div className="card-title">{title}</div>
+              <div className="card-body">{body}</div>
+              <div className="card-context">
+                  <Link to='/posts'>
+                      <Button
+                        className="back-to-posts"
+                        text="Back to posts"
+                        onClick={handleButtonClick}
+                      />
+                  </Link>
+                  <span className="card-label">{userId}</span>
+              </div>
+          </div>
         );
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        selectedPost: state.postDetail.selectedPost,
-    };
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(PostDetail);
+export default PostDetail

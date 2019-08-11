@@ -1,17 +1,12 @@
-import React, {Fragment} from "react";
-import {connect} from "react-redux";
+import React, {Fragment, Component} from "react";
 import PropTypes from "prop-types";
 import {RESOURCE_TYPE} from '../../../../utils';
 import map from 'lodash/map';
-import {
-    fetchPosts,
-} from "../../../store/posts/posts.action";
-import {selectPost} from '../../../store/post-detail/post-detail.action';
 import './posts.scss';
 import Text from "../../../../base/text/text.component";
-import PostCard from "../../../../common/post-card/post-card.component";
+import Card from "../../../../common/card/card.component";
 
-class Posts extends React.Component {
+class Posts extends Component {
 
     handleButtonClick = (event) => {
         const selectedPost = this.props.posts.filter(
@@ -28,7 +23,12 @@ class Posts extends React.Component {
         const {posts} = this.props;
 
         const postsList = map(posts, (post, index) =>
-          <PostCard post={post} key={index} handleButtonClick={this.handleButtonClick}/>
+          <Card
+            type='post'
+            item={post}
+            key={index}
+            handleButtonClick={this.handleButtonClick}
+          />
         );
 
         return (
@@ -50,19 +50,4 @@ Posts.propTypes = {
     selectPost: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, props) => {
-    return {
-        posts: state.posts.posts,
-        loading: state.posts.loading,
-    };
-};
-
-const mapDispatchToProps = {
-    fetchPosts,
-    selectPost,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Posts);
+export default Posts

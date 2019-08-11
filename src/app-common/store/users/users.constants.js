@@ -1,12 +1,12 @@
 /*
-* App constants
+* Posts constants
 * */
 
 import keymirror from 'keymirror';
 
 const constants = keymirror({
-    CHANGE_SELECTED_POST: null,
-    CHANGE_SELECTED_USER: null,
+    REQUEST_USERS: null,
+    RECEIVE_USERS: null,
 });
 
 export default constants;

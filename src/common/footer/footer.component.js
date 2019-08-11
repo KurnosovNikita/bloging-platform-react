@@ -9,7 +9,7 @@ class Footer extends React.PureComponent {
         return (
           <footer className={footerClassName}>
               <div className={contextClassName}>
-                  <Text className="title" text="netflixroulette"/>
+                  <Text className="title" text="blog"/>
               </div>
           </footer>
         );

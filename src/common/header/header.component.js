@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import map from 'lodash/map';
 import {Link} from 'react-router-dom';
 import './header.scss';
 
-class Header extends React.PureComponent {
+class Header extends Component {
     render() {
         const {pages} = this.props;
 
         const NavList = map(pages, (page, index) =>
-          <Link to={`/${page.href}`}>
-              <li className="nav-element" key={index + 'key'}>
-                 {page.name}
+          <Link to={`/${page.href}`} key={index + 'key'}>
+              <li className="nav-element">
+                  {page.name}
               </li>
           </Link>
         );
